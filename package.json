@@ -1,0 +1,49 @@
+{
+  "name": "payclaw",
+  "version": "1.0.0",
+  "description": "Agent-to-Agent payments via x402 protocol with USDC - OpenClaw skill for the agentic economy",
+  "main": "lib/payclaw.js",
+  "scripts": {
+    "setup": "node scripts/setup-wallet.js",
+    "balance": "node scripts/check-balance.js",
+    "fund": "node scripts/fund-testnet.js",
+    "seller": "node examples/seller-agent.js",
+    "buyer": "node examples/buyer-agent.js",
+    "moltbook": "node examples/moltbook-agent.js",
+    "test": "node test/payclaw.test.js"
+  },
+  "keywords": [
+    "x402",
+    "usdc",
+    "payments",
+    "micropayments",
+    "agent",
+    "ai-agent",
+    "openclaw",
+    "moltbot",
+    "clawdbot",
+    "circle",
+    "stablecoin",
+    "web3"
+  ],
+  "author": "Spitfire (Hiyaku AI)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiyaku/payclaw"
+  },
+  "dependencies": {
+    "@x402/core": "^2.2.0",
+    "@x402/evm": "^2.2.0",
+    "@x402/express": "^2.2.0",
+    "@x402/fetch": "^2.2.0",
+    "ethers": "^6.16.0",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.6.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

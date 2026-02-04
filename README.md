@@ -27,7 +27,7 @@ We're entering an era where AI agents need to transact autonomously. PayClaw pro
 
 ```bash
 # Clone and install
-git clone https://github.com/hiyaku/payclaw
+git clone https://github.com/thomasfou/payclaw
 cd payclaw
 npm install
 

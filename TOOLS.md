@@ -39,13 +39,24 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ### Telegram Groups
 - Hiyaku AI Learning Group → -5109429030 / -1005109429030 (allowFrom: Thomas, Richard)
-- (3 other groups TBD — IDs: 5177994507, -5192843311, -1003530307560)
+- WP3 → -5097511309 (crypto updates daily 5:30 PM PT)
+- (other groups TBD — IDs: 5177994507, -5192843311, -1003530307560)
 
 ### X/Twitter Access
 - **oEmbed API** (no auth needed): `https://publish.twitter.com/oembed?url=<tweet_url>`
 - Returns tweet text, author, date — works for any public tweet
 - Limitation: can't search feeds or browse timelines — only reads specific tweet URLs
 - For full feed monitoring, need X API bearer token (TODO: get from Thomas)
+
+### Bookmarks
+- **Local file:** `/home/thomas/clawd/bookmarks.md`
+- **GitHub repo:** `thomasfou/thomasfou` (profile repo)
+- **Push command:** `cp /home/thomas/clawd/bookmarks.md /tmp/thomasfou-profile/ && cd /tmp/thomasfou-profile && git add bookmarks.md && git commit -m "Update bookmarks" && git push`
+- **Always push after updates!**
+
+### Research Directives
+- **Price/market data freshness:** When pulling pricing data (crypto, stocks, commodities) from articles, ALWAYS check the article date. If older than 24-48 hours, fetch updated data from a real-time source (web search for "[asset] price today") before citing figures.
+- **Volatile data = verify:** Any data that moves fast (prices, market caps, TVL, trading volumes) should be cross-checked with current sources, not trusted from background articles.
 
 ---
 

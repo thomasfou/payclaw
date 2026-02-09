@@ -1,0 +1,22 @@
+# Development files
+.env
+.env.example
+.git
+.gitignore
+
+# Test and examples (include in npm for reference)
+# test/
+# examples/
+
+# Editor files
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docs kept separate
+memory/

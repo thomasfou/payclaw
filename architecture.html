@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin: 0; padding: 30px; background: #0d1117; color: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+  .title { text-align: center; font-size: 28px; font-weight: bold; margin-bottom: 6px; color: #58a6ff; }
+  .subtitle { text-align: center; font-size: 15px; color: #8b949e; margin-bottom: 30px; }
+  .diagram { position: relative; width: 900px; height: 1080px; margin: 0 auto; }
+  .box { position: absolute; border-radius: 10px; padding: 12px 16px; font-size: 13px; line-height: 1.6; z-index: 1; }
+  .box .label { font-weight: bold; font-size: 15px; margin-bottom: 5px; }
+  .box .detail { color: #8b949e; font-size: 12px; }
+  .external { background: #1c2333; border: 1px solid #30363d; }
+  .vps-border { position: absolute; background: #0f1318; border: 2px solid #30363d; border-radius: 14px; z-index: 0; }
+  .agent { border: 2px solid #58a6ff; background: #0d1117; }
+  .agent-mav { border: 2px solid #f0883e; background: #0d1117; }
+  .service { background: #1c1c2e; border: 1px solid #484f58; }
+  .infra { background: #111820; border: 1px dashed #484f58; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; margin-left: 5px; }
+  .badge-blue { background: #1f3a5f; color: #58a6ff; }
+  .badge-orange { background: #3d2a1a; color: #f0883e; }
+  svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+  line { stroke-width: 1.8; }
+  .section-label { position: absolute; font-size: 11px; color: #484f58; text-transform: uppercase; letter-spacing: 1.5px; z-index: 1; font-weight: bold; }
+  .legend { position: absolute; bottom: 15px; left: 30px; font-size: 12px; color: #8b949e; z-index: 1; }
+  .legend span { margin-right: 20px; }
+  .legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+</style>
+</head>
+<body>
+<div class="title">🔥 Hiyaku AI Agent Infrastructure</div>
+<div class="subtitle">Hetzner VPS — 65.108.80.195 — hostname: spitfire — Ubuntu 22.04 — 4 vCPU / 8GB RAM / 80GB SSD</div>
+
+<div class="diagram">
+<svg>
+  <!-- Telegram → Spitfire -->
+  <line x1="150" y1="105" x2="210" y2="225" stroke="#58a6ff" opacity="0.5"/>
+  <!-- Telegram → Maverick -->
+  <line x1="170" y1="105" x2="570" y2="225" stroke="#f0883e" opacity="0.5"/>
+  <!-- Anthropic → Spitfire -->
+  <line x1="440" y1="90" x2="300" y2="225" stroke="#58a6ff" opacity="0.5"/>
+  <!-- Anthropic → Maverick -->
+  <line x1="470" y1="90" x2="640" y2="225" stroke="#f0883e" opacity="0.5"/>
+  <!-- Brave → Spitfire -->
+  <line x1="720" y1="100" x2="320" y2="250" stroke="#58a6ff" opacity="0.3" stroke-dasharray="5,5"/>
+  <!-- Spitfire → Browser -->
+  <line x1="220" y1="410" x2="170" y2="510" stroke="#58a6ff" opacity="0.4"/>
+  <!-- Spitfire → Bitcoin -->
+  <line x1="340" y1="410" x2="500" y2="510" stroke="#3fb950" opacity="0.4"/>
+  <!-- Spitfire → Files -->
+  <line x1="180" y1="410" x2="120" y2="660" stroke="#484f58" opacity="0.3" stroke-dasharray="5,5"/>
+  <!-- Maverick → Files -->
+  <line x1="640" y1="410" x2="640" y2="660" stroke="#484f58" opacity="0.3" stroke-dasharray="5,5"/>
+  <!-- Lightning → External -->
+  <line x1="610" y1="510" x2="760" y2="100" stroke="#3fb950" opacity="0.25" stroke-dasharray="5,5"/>
+  <!-- SSH line -->
+  <line x1="440" y1="1010" x2="440" y2="950" stroke="#bc8cff" opacity="0.5"/>
+</svg>
+
+  <!-- ===== EXTERNAL SERVICES ===== -->
+  <div class="section-label" style="top: 5px; left: 25px;">External Services</div>
+
+  <div class="box external" style="left:35px; top:40px; width:180px;">
+    <div class="label">📱 Telegram API</div>
+    <div class="detail">Bot API via grammY<br>Hiyaku Group + DMs</div>
+  </div>
+
+  <div class="box external" style="left:340px; top:28px; width:200px;">
+    <div class="label">🧠 Anthropic API</div>
+    <div class="detail">Claude Opus 4.5 (Spitfire)<br>Claude Sonnet (Maverick)</div>
+  </div>
+
+  <div class="box external" style="left:660px; top:40px; width:190px;">
+    <div class="label">🔍 Brave / ⚡ Alby NWC</div>
+    <div class="detail">Web Search API<br>Lightning wallet relay</div>
+  </div>
+
+  <!-- ===== VPS BOUNDARY ===== -->
+  <div class="vps-border" style="left:8px; top:150px; width:884px; height:780px;">
+    <div style="position:absolute; top:10px; left:20px; font-size:11px; color:#484f58; text-transform:uppercase; letter-spacing:1.5px; font-weight:bold;">
+      VPS — Port 57611 (SSH) — fail2ban active — Docker 172.17.0.0/16
+    </div>
+  </div>
+
+  <!-- ===== AGENTS ===== -->
+  <div class="box agent" style="left:60px; top:215px; width:330px; height:180px;">
+    <div class="label">🔥 Spitfire <span class="badge badge-blue">thomas</span></div>
+    <div class="detail">
+      PID 38045 (clawdbot) + 38052 (gateway)<br>
+      Ports: 18789, 18791, 18792 (localhost only)<br>
+      Model: claude-opus-4-5<br>
+      Bot: @tfspitfirebot<br>
+      Workspace: /home/thomas/clawd/<br>
+      <strong style="color:#58a6ff">Capabilities:</strong> browser, web search, exec,<br>
+      cron, TTS, sub-agents, file I/O, Bitcoin wallet
+    </div>
+  </div>
+
+  <div class="box agent-mav" style="left:490px; top:215px; width:330px; height:180px;">
+    <div class="label">🦅 Maverick <span class="badge badge-orange">maverick</span></div>
+    <div class="detail">
+      PID 1008 (clawdbot) + 1144 (gateway)<br>
+      Ports: 18889, 18891, 18892 (localhost only)<br>
+      Model: claude-sonnet (estimated)<br>
+      Bot: @tfmaverickbot<br>
+      Workspace: /home/maverick/<br>
+      <strong style="color:#f0883e">Capabilities:</strong> sandboxed exec, chat,<br>
+      file I/O (no browser, no web — sandbox)
+    </div>
+  </div>
+
+  <!-- ===== SERVICES ===== -->
+  <div class="box service" style="left:40px; top:490px; width:230px;">
+    <div class="label">🌐 Headless Chromium</div>
+    <div class="detail">Spitfire only<br>Screenshots, DOM, navigation<br>X/Twitter, Moltbook, web automation</div>
+  </div>
+
+  <div class="box service" style="left:380px; top:490px; width:260px;">
+    <div class="label">₿ Bitcoin / Lightning Wallet</div>
+    <div class="detail">Nostr ID: npub1w50g5qv9rgnha...<br>NWC test wallet — 10,000 sats<br>/home/thomas/clawd/bitcoin/<br>Keys in .env.keys (mode 600)</div>
+  </div>
+
+  <!-- ===== FILESYSTEMS ===== -->
+  <div class="box infra" style="left:35px; top:640px; width:320px; height:95px;">
+    <div class="label">📁 /home/thomas/clawd/</div>
+    <div class="detail">SOUL.md · AGENTS.md · USER.md · IDENTITY.md<br>TOOLS.md · HEARTBEAT.md · MEMORY.md<br>memory/ · bitcoin/ · docs/ · architecture.html</div>
+  </div>
+
+  <div class="box infra" style="left:480px; top:640px; width:320px; height:95px;">
+    <div class="label">📁 /home/maverick/</div>
+    <div class="detail">Separate Linux user (fully isolated)<br>Own clawdbot config, workspace, memory<br>Cannot access /home/thomas/ and vice versa</div>
+  </div>
+
+  <!-- ===== SHARED INFRA ===== -->
+  <div class="box infra" style="left:120px; top:800px; width:640px; height:70px;">
+    <div class="label">🏗️ Shared System Layer</div>
+    <div class="detail">
+      Node.js v22.22.0 · Docker daemon · fail2ban · systemd · SSH (port 57611)<br>
+      DNS: 127.0.0.53 · Disk: 35% used (25G/75G) · RAM: 1.4G/7.6G · Load: idle
+    </div>
+  </div>
+
+  <!-- ===== HUMAN ACCESS ===== -->
+  <div class="box external" style="left:130px; top:940px; width:620px; height:70px;">
+    <div class="label">👥 Human Operators</div>
+    <div class="detail">
+      Thomas Fou (owner) · Richard Chung · Hooman · deewin1000<br>
+      SSH access (port 57611) · Telegram Hiyaku Group (-5109429030) · Root override on all agent files
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="dot" style="background:#58a6ff"></span> Spitfire</span>
+    <span><span class="dot" style="background:#f0883e"></span> Maverick</span>
+    <span><span class="dot" style="background:#3fb950"></span> Bitcoin/LN</span>
+    <span><span class="dot" style="background:#bc8cff"></span> SSH</span>
+    <span><span class="dot" style="background:#484f58"></span> Filesystem</span>
+  </div>
+</div>
+</body>
+</html>
